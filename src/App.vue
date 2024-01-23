@@ -98,6 +98,7 @@
 
 <script>
 import axios from 'axios';
+import { useToast } from "vue-toastification";
 
 export default {
   name: 'App',
@@ -159,9 +160,10 @@ export default {
         this.cidade = ''
 
       }), 
-      (error) => {
-        // usar useToast para exibir erro
-        alert(error)
+      (error) => {  
+        console.log(error);
+        const toast = useToast();
+        toast.error('Cidade não encontrada');
       }
     }
   },
@@ -322,4 +324,15 @@ button{
     margin-right: 10px;
 }
 
+.Vue-Toastification__toast.Vue-Toastification__toast--error.bottom-center {
+    display: flex!important;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+button.Vue-Toastification__close-button {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
 </style>
