@@ -181,6 +181,12 @@
         <p>Precipitação</p>
       </div>
     </aside>
+
+    <footer>
+      <a href="https://www.dubovicky.com.br/" target="_blank">
+        <p>Desenvolvido com ❤️‍🔥 e ☕ por Dubovicky.</p>
+      </a>
+    </footer>
   </div>
 </template>
 
@@ -271,6 +277,7 @@ export default {
   },
   mounted() {
     document.title = 'Tempo - Dubovicky'
+    document.querySelector('meta[name="description"]').setAttribute("content", "Previsão de Tempo desenvolvido por Dubovicky com Vue.js 3 e OpenWeather API");
     // Chama getList quando o componente é montado
     this.getList();
   },
@@ -449,6 +456,7 @@ aside {
     border-radius: 10px;
     margin: 0;
     color: #FFF;
+    display: none;
 }
 
 aside .lg-temperatura, aside .lg-vento, aside .lg-umidade, aside .lg-precipitacao {
@@ -461,55 +469,73 @@ aside img, aside svg {
     width: 30px;
 }
 
-@media (max-width: 768px) {
-.box-temperatura{
-  flex-direction: column;
-  padding: 20px;
-  gap: 20px;
+footer{
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
-.box-temperatura img{
-  width: 50px;
+footer a{
+  text-decoration: none;
 }
 
-aside {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px;
-    left: 10%;
-    right: 10%;
-    gap: 5px;
-}
-
-aside > div{
-  width: 45%;
-}
-
-aside p {
-    margin: 5px;
-    font-size: 10px;
-}
-
-aside img, aside svg {
-    width: 15px;
-}
-
-.Vue-Toastification__container.bottom-center{
+footer p{
+  color: #222;
   font-size: 12px;
-  width: 75%;
-  /* centralizar */
-  left: 8%;
-  right: 12%;
 }
 
-.Vue-Toastification__toast{
-  border-radius: 10px!important;
-}
+@media (max-width: 768px) {
+  .box-temperatura{
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
 
-/* diminuir tamanho da fonte do toast */
-.Vue-Toastification__toast-body{
-  font-size: 10px!important;
-}
+  .box-temperatura img{
+    width: 50px;
+  }
+
+  aside {
+      /* display: flex; */
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+      left: 10%;
+      right: 10%;
+      gap: 5px;
+  }
+
+  aside > div{
+    width: 45%;
+  }
+
+  aside p {
+      margin: 5px;
+      font-size: 10px;
+  }
+
+  aside img, aside svg {
+      width: 15px;
+  }
+
+  .Vue-Toastification__container.bottom-center{
+    font-size: 12px;
+    width: 75%;
+    /* centralizar */
+    left: 8%;
+    right: 12%;
+  }
+
+  .Vue-Toastification__toast{
+    border-radius: 10px!important;
+  }
+
+  /* diminuir tamanho da fonte do toast */
+  .Vue-Toastification__toast-body{
+    font-size: 10px!important;
+  }
 }
 </style>
