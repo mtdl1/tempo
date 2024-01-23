@@ -12,17 +12,21 @@ const app = createApp(App);
 
 // Adicione as opções desejadas aqui ou remova completamente se não precisar de configurações específicas
 const options = {
-  position: 'bottom-center',
+  position: "bottom-center",
   timeout: 5000,
   closeOnClick: true,
   pauseOnFocusLoss: true,
   pauseOnHover: true,
-  draggable: false,
+  draggable: true,
   draggablePercent: 0.6,
   showCloseButtonOnHover: false,
   hideProgressBar: false,
-  closeButton: 'button',
+  closeButton: "button",
   icon: true,
+  rtl: false,
+  transition: "Vue-Toastification__slideBlurred",
+  maxToasts: 20,
+  newestOnTop: true
 };
 
 // Use o plugin Toast com as opções fornecidas
