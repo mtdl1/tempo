@@ -126,6 +126,9 @@ export default {
       this.axios.get(this.api)
       .then((response) => {
         // console.log(response.data)
+        // informar com o toast que a cidade foi encontrada
+        const toast = useToast();
+        toast.success(`Cidade "${this.cidade}" encontrada`);
         this.respostaapi = response.data
         this.temperatura = response.data.list[0].main.temp
         // adicionar o país da cidade após ela
@@ -158,13 +161,17 @@ export default {
         // limpa o input
         this.cidadeexibida = this.cidade
         this.cidade = ''
-
-      }), 
-      (error) => {  
-        console.log(error);
+      })
+      .catch((error) => {
         const toast = useToast();
-        toast.error('Cidade não encontrada');
-      }
+        if (error.response && error.response.status === 404) {
+            // Use a referência ao toast
+            toast.error(`Cidade "${this.cidade}" não encontrada`);
+          } else {
+            console.error("Erro na requisição:", error);
+            alert('Erro ao buscar dados. Por favor, tente novamente mais tarde.');
+          }
+      })
     }
   },
   mounted() {
