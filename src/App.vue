@@ -121,7 +121,7 @@ export default {
   },
   methods: {
     getList() {
-      this.api = 'http://api.openweathermap.org/data/2.5/forecast?q=' + encodeURIComponent(this.cidade) + '&cnt=5&appid=f2a5d824858cd289581d71f53b51e973'
+      this.api = 'https://api.openweathermap.org/data/2.5/forecast?q=' + encodeURIComponent(this.cidade) + '&cnt=5&appid=f2a5d824858cd289581d71f53b51e973'
       this.axios.get(this.api)
       .then((response) => {
         // console.log(response.data)
