@@ -342,4 +342,14 @@ button.Vue-Toastification__close-button {
     height: 24px;
     margin: 0;
 }
+@media (max-width: 768px) {
+.box-temperatura{
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+.box-temperatura img{
+  width: 50px;
+}
+}
 </style>
