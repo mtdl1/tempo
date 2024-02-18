@@ -5,7 +5,10 @@
 
 import { createApp } from 'vue';
 import App from './App.vue';
+import router from './router';
 import Toast from 'vue-toastification';
+import PhosphorIcons from "@phosphor-icons/vue"
+
 import 'vue-toastification/dist/index.css';
 
 const app = createApp(App);
@@ -31,5 +34,8 @@ const options = {
 
 // Use o plugin Toast com as opções fornecidas
 app.use(Toast, options);
+app.use(router);
+app.use(PhosphorIcons);
+
 
 app.mount('#app');
