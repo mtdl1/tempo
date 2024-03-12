@@ -179,8 +179,8 @@ export default {
         this.respostaapigeral = response.data.list
         // console.log(this.respostaapigeral)
 
-        // this.clima = response.data.list[0].weather[0].main
-        this.clima = "Snow"
+        this.clima = response.data.list[0].weather[0].main
+        // this.clima = "Snow"
         this.idIconeClima = response.data.list[0].weather[0].icon
         this.temperatura = response.data.list[0].main.temp
         // adicionar o país da cidade após ela
