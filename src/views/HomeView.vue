@@ -5,7 +5,7 @@
       <button @click="getList">Pesquisar</button>
     </div>
     <main>
-      <h1> Tempo em {{ cidadeexibida }}</h1>
+      <h1> Tempo em {{ cidadeexibida }} {{ this.clima }}</h1>
       <div class="box-temperatura">
         <img :src="'https://openweathermap.org/img/wn/' + this.idIconeClima + '@4x.png'" alt="">
         <p class="temperatura">{{ temperatura }}</p>
@@ -179,8 +179,8 @@ export default {
         this.respostaapigeral = response.data.list
         // console.log(this.respostaapigeral)
 
-
-        this.clima = response.data.list[0].weather[0].main
+        // this.clima = response.data.list[0].weather[0].main
+        this.clima = "Snow"
         this.idIconeClima = response.data.list[0].weather[0].icon
         this.temperatura = response.data.list[0].main.temp
         // adicionar o país da cidade após ela
@@ -217,6 +217,72 @@ export default {
         // limpa o input
         this.cidadeexibida = this.cidade
         this.cidade = ''
+        // switch para o clima
+        switch (this.clima) {
+          case 'Clear':
+            this.clima = 'Céu limpo'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Clouds':
+            this.clima = 'Nublado'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/414659/pexels-photo-414659.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Rain':
+            this.clima = 'Chuva'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/325676/pexels-photo-325676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+            break;
+          case 'Drizzle':
+            this.clima = 'Garoa'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/268832/pexels-photo-268832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Thunderstorm':
+            this.clima = 'Tempestade'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/1118869/pexels-photo-1118869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Snow':
+            this.clima = 'Neve'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/3334585/pexels-photo-3334585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Mist':
+            this.clima = 'Névoa'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/691031/pexels-photo-691031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Smoke':
+            this.clima = 'Fumaça'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Haze':
+            this.clima = 'Neblina'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/691031/pexels-photo-691031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Dust':
+            this.clima = 'Poeira'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Fog':
+            this.clima = 'Névoa'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/691031/pexels-photo-691031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Sand':
+            this.clima = 'Areia'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Ash':
+            this.clima = 'Cinzas'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Squall':
+            this.clima = 'Rajada'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          case 'Tornado':
+            this.clima = 'Tornado'
+            document.body.style.backgroundImage = "url('https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
+            break;
+          default:
+            this.clima = 'Clima não identificado'
+            break;
+        }
       })
       .catch((error) => {
         const toast = useToast();
@@ -284,6 +350,7 @@ body{
   align-items: center;
   font-family: 'Overpass', sans-serif;
 }
+
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   margin: 0;
