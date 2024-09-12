@@ -201,17 +201,17 @@ export default {
           <p class="temperatura">{{ temperatura }}</p>
       </div>
       <div class="col complementos row">
-        <div class="vento">
+        <div class="vento bento-card">
           <ph-wind :size="32" :weight="weightPrevisao" color="#0d47a3" />
           <p>Vento:</p>
           <p>{{ vento }}</p>
         </div>
-        <div class="umidade">
+        <div class="umidade bento-card">
           <ph-drop :size="32" :weight="weightPrevisao" color="#0d47a3" />
           <p>Umidade:</p>
           <p>{{ umidade }}</p>
         </div>
-        <div class="box-chuva">
+        <div class="box-chuva bento-card full-width">
           <ph-umbrella :size="32" :weight="weightPrevisao" color="#0d47a3" />
           <p>Chuva:</p>
           <p>{{ precipitacao }} mm</p>
@@ -278,6 +278,7 @@ export default {
 * {
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    max-width: 100%;
 }
 
 body {
@@ -348,12 +349,24 @@ button .search-icon {
     display: flex;
 }
 
+.temperatura{
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.temperatura p{
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
 .total-info {
     gap: 20px;
 }
 
 .col{
-  background-color: rgba(255, 255, 255, 0.2); /* bg-white/20 */
+  background-color: rgba(255, 255, 255, 0.02); /* bg-white/20 */
   backdrop-filter: blur(1rem); /* backdrop-blur-lg */
   border-radius: 1.5rem; /* rounded-3xl */
   padding: 2rem; /* p-8 */
@@ -372,29 +385,69 @@ iframe{
   border: 0;
   /* zoom scale */
   transform: scale(1.6);
+  width: 100%;
 }
 
 iframe svg{
   width: 200px!important;
 }
 
+.bento-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.full-width {
+  flex: 0 0 100%;
+}
+
 .complementos {
-    flex-grow: 1;
-    justify-content: space-around;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.complementos div {
-    text-align: center;
-    width: 33%;
+.vento, .umidade {
+  flex: 1 1 45%; /* Ajuste para dividir o espaço igualmente */
 }
 
-.complementos, .temperatura {
-    align-items: center;
+.box-chuva {
+  flex: 1 1 100%; /* Ocupa 100% do espaço */
 }
 
 p{
   word-wrap: break-word;
+  color: white;
+}
+
+/* responsivo */
+@media (max-width: 768px) {
+  .container{
+    padding: 0.5rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .row{
+    flex-wrap: wrap;
+  }
+  .temperatura{
+    width: 100%;
+  }
+  iframe{
+    max-height: 100px;
+    width: 100%;
+  }
+  h1{
+    font-size: 1rem;
+  }
+  .col{
+    padding: 1rem;
+  }
 }
 
 </style>
