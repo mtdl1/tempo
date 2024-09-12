@@ -1,4 +1,4 @@
-# tempo-vue
+# Seeather - Dubovicky
 
 ## Project setup
 ```
