@@ -1,22 +1,17 @@
 <template>
-    <SidebarMenu />
-    <RouterView />
+    <Weather />
     <FooterApp />
 </template>
 
 <script>
-import SidebarMenu from "./components/layout/sidebar-menu.vue"
-import FooterApp from "./components/layout/footer-app.vue"
+import FooterApp from "./components/layout/Footer.vue"
+import Weather from './components/layout/Weather.vue'
 
 export default{
   name: 'App',
   components: {
-    SidebarMenu,
-    FooterApp
+    FooterApp,
+    Weather
   }
 }
 </script>
-
-<style>
-
-</style>
