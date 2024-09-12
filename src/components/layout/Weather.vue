@@ -425,8 +425,19 @@ p{
   color: white;
 }
 
+.Vue-Toastification__toast.Vue-Toastification__toast--success.bottom-center {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 10px 10px 0;
+}
+
+
 /* responsivo */
 @media (max-width: 768px) {
+  *{
+    overflow: hidden;
+  }
+  .toast
   .container{
     padding: 0.5rem;
     max-width: 90%;
@@ -439,7 +450,7 @@ p{
     width: 100%;
   }
   iframe{
-    max-height: 100px;
+    max-height: 50px;
     width: 100%;
   }
   h1{
